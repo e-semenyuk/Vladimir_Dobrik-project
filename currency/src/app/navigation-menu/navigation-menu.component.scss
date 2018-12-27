@@ -2,11 +2,33 @@
     &__container {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         padding: 20px;
         border-bottom: 1px solid gray;
     }
 
-    &__search {
-        
+    &__links {
+        font-size: 20px;
+    }
+
+    &__link {
+        padding: 0 20px;
+        color: rgba($color: #fff, $alpha: 0.8);
+        text-decoration: none;
+        border-right: 1px solid gray;
+
+        &:last-child {
+            border: none;
+            margin-right: 50px;
+        }
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    &__link-label {
+        border-bottom: 1px solid rgba($color: #fff, $alpha: 0.8);
     }
 }
