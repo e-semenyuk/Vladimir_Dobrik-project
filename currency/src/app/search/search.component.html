@@ -1,14 +1,12 @@
 <div id="search__container">
-
-  <input class="search__input" placeholder=" Enter abbreviation" (input)="search(searchBox.value)" #searchBox/>
-
-  <ul class="search__result" *ngIf="searchResult && searchResult.length">
-    <li class="search__item" *ngFor="let currency of searchResult" >
-      <a class="search__link" routerLink="">
-        <span class="search__abbreviation">{{ currency.Cur_Abbreviation }}</span>
-        <span class="search__full-name">{{ currency.Cur_Name }}</span>
-      </a>
-    </li>
-  </ul>
-
+    <input class="search__input" placeholder=" Enter abbreviation"
+      (input)="search(searchBox.value)" #searchBox/>
+    <ul class="result search__result" *ngIf="searchResult && searchResult.length">
+        <li class="result__item" *ngFor="let currency of searchResult" >
+            <a class="result__link" routerLink="">
+                <span class="result__abbreviation">{{ currency.Cur_Abbreviation }}</span>
+                <span class="result__full-name">{{ currency.Cur_Name }}</span>
+            </a>
+        </li>
+    </ul>
 </div>

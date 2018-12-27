@@ -1,17 +1,15 @@
-<div class="currencies">
-    <ul class="currencies__container">
-        <li class="currency currencies__currency" *ngFor="let currency of currencies; let index = index">
-          <a class="currency__link" routerLink="">
-              <i class="currency__icon far fa-money-bill-alt"></i>
-              <span class="currency__abbr">{{ currency.Cur_Abbreviation }}</span>
-              <span class="currency__rate">{{ currency.Cur_OfficialRate | number:'1.4' }}</span>
-              <div class="currency__dif currency__dif--increased"
-                *ngIf="prevCurrencies && prevCurrencies.length"
-                [ngClass]="{'currency__dif--decreased': getDif(index) < 0}">
-                {{ getDif(index) | number:'1.4' | showplus }}
-              </div>
-          </a>
-        </li>
-      </ul>
-</div>
-
+<ul class="currencies__container">
+    <li class="currency currencies__currency"
+      *ngFor="let currency of currencies; let index = index">
+        <a class="currency__link" routerLink="">
+            <i class="currency__icon far fa-money-bill-alt"></i>
+            <span class="currency__abbr">{{ currency.Cur_Abbreviation }}</span>
+            <span class="currency__rate">{{ currency.Cur_OfficialRate | number:'1.4' }}</span>
+            <div class="currency__dif currency__dif--increased"
+              *ngIf="prevCurrencies && prevCurrencies.length"
+              [ngClass]="{'currency__dif--decreased': getDif(index) < 0}">
+              {{ getDif(index) | number:'1.4' | showplus }}
+            </div>
+        </a>
+    </li>
+</ul>
