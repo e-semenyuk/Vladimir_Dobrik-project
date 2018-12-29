@@ -1,14 +1,23 @@
+<currency-loading-spinner *ngIf="showSpinner"></currency-loading-spinner>
 <ul class="currencies__container">
     <li class="currency currencies__currency"
-      *ngFor="let currency of currencies; let index = index">
-        <a class="currency__link" routerLink="">
+      *ngFor="let currency of currencies; let index = index"
+      (click)="onSelect(currency)">
+        <a class="currency__link" [routerLink]="['currency', currency.Cur_ID, 'dynamics']"
+          [class.currency__link--selected]="currency === selectedCurrency">
             <i class="currency__icon far fa-money-bill-alt"></i>
-            <span class="currency__abbr">{{ currency.Cur_Abbreviation }}</span>
-            <span class="currency__rate">{{ currency.Cur_OfficialRate | number:'1.4' }}</span>
+            <span class="currency__abbr"
+              [class.currency__abbr--selected]="currency === selectedCurrency">
+                {{ currency.Cur_Abbreviation }}
+            </span>
+            <span class="currency__rate"
+              [class.currency__rate--selected]="currency === selectedCurrency">
+                {{ currency.Cur_OfficialRate | number:'1.4' }}
+            </span>
             <div class="currency__dif currency__dif--increased"
               *ngIf="prevCurrencies && prevCurrencies.length"
               [ngClass]="{'currency__dif--decreased': getDif(index) < 0}">
-              {{ getDif(index) | number:'1.4' | showplus }}
+                {{ getDif(index) | number:'1.4' | showplus }}
             </div>
         </a>
     </li>

@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { DateService } from './date.service';
+import { CurrencyDunamics } from './currency-dinamics';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ import { DateService } from './date.service';
 export class CurrencyService {
   public currencies: Currency[];
   private currenciesRatesUrl = 'http://www.nbrb.by/API/ExRates/Rates';
+  private currenciesUrl = 'http://www.nbrb.by/API/ExRates/Currencies';
+  private currenciesDynamics = 'http://www.nbrb.by/API/ExRates/Rates/Dynamics';
 
   constructor(private http: HttpClient,
               public dateService: DateService) {
@@ -50,20 +53,52 @@ export class CurrencyService {
 
     this.currencies.forEach(item => {
       if (term.trim().length) {
-        if (item.Cur_Abbreviation.includes(term.toUpperCase())) {
-          if(!searchResult.includes(item)){
+        let isIncludesTerm = item.Cur_Abbreviation.includes(term.toUpperCase());
+
+        if (isIncludesTerm) {
+          let isIncludesCur = searchResult.includes(item);
+
+          if(!isIncludesCur){
             searchResult.push(item);
           }
         }
       }
 
       searchResult.forEach((item, index, arr) => {
-        if(!item.Cur_Abbreviation.includes(term.trim().toUpperCase())) {
+        let isIncludesTerm = item.Cur_Abbreviation.includes(term.toUpperCase());
+
+        if(!isIncludesTerm) {
           arr.splice(index, 1);
         }
       });
     });
 
     return searchResult;
+  }
+
+  getCurrency(id: number): Observable<Currency> {
+    const url = `${this.currenciesUrl}/${id}`;
+
+    return this.http.get<Currency>(url)
+      .pipe(
+        tap(_ => console.log(`fetched currency id = ${id}`)),
+        catchError(this.handleError<Currency>())
+      );
+  }
+
+  getDynamics(id: number, startDate: Date, endDate: Date): Observable<CurrencyDunamics[]> {
+    let startFormattedDate: string;
+    let endFormattedDate: string;
+
+    startFormattedDate = `startDate=${this.dateService.dateToYMD(startDate)}`;
+    endFormattedDate = `endDate=${this.dateService.dateToYMD(endDate)}`;
+
+    let url = `${this.currenciesDynamics}/${id}?${startFormattedDate}&${endFormattedDate}`;
+
+    return this.http.get<CurrencyDunamics[]>(url)
+      .pipe(
+        tap(_ => console.log(`getDynamics fetched rates of currency id =${id}`)),
+        catchError(this.handleError([]))
+      );
   }
 }

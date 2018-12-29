@@ -3,7 +3,7 @@
       (input)="search(searchBox.value)" #searchBox/>
     <ul class="result search__result" *ngIf="searchResult && searchResult.length">
         <li class="result__item" *ngFor="let currency of searchResult" >
-            <a class="result__link" routerLink="">
+            <a class="result__link" [routerLink]="['currency', currency.Cur_ID, 'dynamics']">
                 <span class="result__abbreviation">{{ currency.Cur_Abbreviation }}</span>
                 <span class="result__full-name">{{ currency.Cur_Name }}</span>
             </a>

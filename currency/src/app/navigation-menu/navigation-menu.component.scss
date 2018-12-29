@@ -5,11 +5,12 @@
         justify-content: space-between;
         align-items: center;
         padding: 20px;
-        border-bottom: 1px solid gray;
+        border-bottom: 2px solid gray;
     }
 
     &__links {
         font-size: 20px;
+        font-family: sans-serif;
     }
 
     &__link {

@@ -1,12 +1,20 @@
 .currencies {
     &__container {
-        display: inline-block;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
         padding: 10px;
         border: 1px solid gray {
             top: none;
             left: none;
         }
         font-size: 20px;
+        overflow: scroll;
+        height: 90vh;
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
     }
 
     &__currency {
@@ -21,8 +29,13 @@
     }
 
     &__abbr {
+        font-family: sans-serif;
         margin-right: 15px;
         color: #296A8A;
+
+        &--selected {
+            color: #fff;
+        }
     }
 
     &__dif {
@@ -54,10 +67,18 @@
         &:hover {
             background-color: rgba($color: #fff, $alpha: .7);
         }
+
+        &--selected {
+            background-color: #0166FF;
+        }
     }
 
     &__rate {
         margin-right: 15px;
         color: #296A8A;
+
+        &--selected {
+            color: #fff;
+        }
     }
 }

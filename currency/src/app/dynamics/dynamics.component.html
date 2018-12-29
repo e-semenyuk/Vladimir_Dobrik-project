@@ -1,0 +1,16 @@
+<div class="dynamics__container" *ngIf="chart">
+  <mat-form-field class="">
+    <input matInput [matDatepicker]="startDate" placeholder="Select start date"
+      (dateChange)="onChange('start', $event)">
+    <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+    <mat-datepicker #startDate></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="">
+    <input matInput [matDatepicker]="endDate" placeholder="Select end date"
+      (dateChange)="onChange('end', $event)">
+    <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+    <mat-datepicker #endDate></mat-datepicker>
+  </mat-form-field>
+  <canvas id="canvas" >{{ chart }}</canvas>
+</div>

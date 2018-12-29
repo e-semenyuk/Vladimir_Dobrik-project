@@ -1,10 +1,29 @@
 @import './assets/reset';
 @import './assets/variables';
+@import '~@angular/material/theming';
 
-html {
-    font-size: 10px;
+@include mat-core();
+
+$candy-app-primary: mat-palette($mat-indigo);
+$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+$candy-app-warn:    mat-palette($mat-pink);
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
+$dark-warn:    mat-palette($mat-deep-orange);
+$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+@include angular-material-theme($dark-theme);
+
+.light-theme {
+    @include angular-material-theme($candy-app-theme);
 }
 
 body {
     background-color: $globalBgClr;
+}
+html {
+    color: #fff;
+    overflow: hidden;
 }

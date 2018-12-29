@@ -12,18 +12,24 @@ export class CurrenciesComponent implements OnInit {
 
   currencies: Currency[];
   prevCurrencies: Currency[];
+  selectedCurrency: Currency;
+  showSpinner: boolean = true;
 
   constructor(private currencyService: CurrencyService,
               public dateService: DateService) { }
 
   ngOnInit() {
     this.getCurrencies();
-    this.getPrevCurrencies(this.dateService.getDateWeekAgo());
+    this.getPrevCurrencies(this.dateService.getDateNthDayAgo(1));
+    
   }
 
   getCurrencies(date?: Date): void {
     this.currencyService.getCurrencies(date)
-      .subscribe(currencies => this.currencies = currencies);
+      .subscribe(currencies => {
+        setTimeout(()=>this.showSpinner = false, 1500);
+        return this.currencies = currencies
+      });
   }
 
   getPrevCurrencies(date?: Date): void {
@@ -42,5 +48,9 @@ export class CurrenciesComponent implements OnInit {
     result = prevRate - curRate;
 
     return result;
+  }
+
+  onSelect(currency: Currency): void {
+    this.selectedCurrency = currency;
   }
 }

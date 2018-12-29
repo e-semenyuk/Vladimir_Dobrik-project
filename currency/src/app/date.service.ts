@@ -17,11 +17,11 @@ export class DateService {
     return result;
   }
 
-  getDateWeekAgo(): Date {
+  getDateNthDayAgo(daysAgo: number): Date {
     return new Date(
       new Date().getFullYear(),
       new Date().getMonth(),
-      new Date().getDate() - 7
+      new Date().getDate() - daysAgo
     );
   }
 }
