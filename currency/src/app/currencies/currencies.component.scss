@@ -4,13 +4,9 @@
         flex-direction: column;
         flex-wrap: nowrap;
         padding: 10px;
-        border: 1px solid gray {
-            top: none;
-            left: none;
-        }
         font-size: 20px;
         overflow: scroll;
-        height: 90vh;
+        height: 85vh;
 
         &::-webkit-scrollbar{
             display: none;
@@ -34,13 +30,12 @@
         color: #296A8A;
 
         &--selected {
-            color: #fff;
+            color: #292929;
         }
     }
 
     &__dif {
         display: inline-block;
-        margin-right: 15px;
         color: #fff;
         padding: 5px 10px;
         border: 1px solid #fff {
@@ -69,7 +64,7 @@
         }
 
         &--selected {
-            background-color: #0166FF;
+            background-color: #FFC107;
         }
     }
 
@@ -78,7 +73,7 @@
         color: #296A8A;
 
         &--selected {
-            color: #fff;
+            color: #292929;
         }
     }
 }

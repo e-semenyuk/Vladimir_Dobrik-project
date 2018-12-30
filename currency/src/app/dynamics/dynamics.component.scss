@@ -6,5 +6,18 @@
         height:40vh;
         width: 65vw;
         margin-top: 50px;
+        color: #FFC107;
+    }
+
+    &__datepickers {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+    }
+
+    &__datepicker {
+        &:first-child {
+            margin-right: 100px;
+        }
     }
 }

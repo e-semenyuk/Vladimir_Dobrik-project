@@ -19,4 +19,9 @@ export class SearchComponent implements OnInit {
   search(term: string): void {
     this.searchResult = this.currencyService.searchCurrencies(term);
   }
+
+  select(searchBox: HTMLInputElement): void {
+    this.searchResult = [];
+    searchBox.value = '';
+  }
 }

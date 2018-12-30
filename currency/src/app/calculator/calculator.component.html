@@ -1,0 +1,57 @@
+<div class="calculator__form">
+  <div class="calculator__form-group">
+    <mat-form-field class="form-field calculator__form-field">
+      <mat-label class="form-field__label">Value</mat-label>
+      <input class="form-field__input" matInput type="number"
+        autocomplete="off" name="count" min="0"
+        [(ngModel)]="value" #currencyCount="ngModel">
+      <button class="form-field__button" mat-button *ngIf="value"
+        matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-icon class="form-field__icon">close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class=" form-field calculator__form-field">
+      <mat-label class="form-field__label">Currency</mat-label>
+      <mat-select class="form-field__select" name="type"
+        [(ngModel)]="firstType" #firstCurrency="ngModel">
+        <mat-option class="form-field__option">None</mat-option>
+        <mat-option class="form-field__option" *ngFor="let currency of currencies"
+          [value]="currency.Cur_OfficialRate">
+          <span class="form-field__option-title">{{ currency.Cur_Abbreviation }} </span>
+          <span class="form-field__option-title">{{ currency.Cur_Name }}</span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="calculator__form-group">
+    <mat-form-field class="calculator__form-field">
+      <mat-label>Result</mat-label>
+      <mat-label class="form-field__label">
+        <span class="form-field__result"
+          *ngIf="firstCurrency.model && currencyCount.model && secondCurrency.model ">
+          {{(currencyCount.model*firstCurrency.model)/secondCurrency.model | number:'1.2'}}
+        </span>
+        <span class="form-field__result"
+          *ngIf="firstCurrency.model && currencyCount.model && secondCurrency.model === undefind">
+          {{currencyCount.model*firstCurrency.model | number:'1.2'}} BYN
+        </span>
+      </mat-label>
+      <input class="form-field__input" matInput type="number" name="result" disabled>
+    </mat-form-field>
+
+    <mat-form-field class="form-field calculator__form-field">
+      <mat-label class="form-field__label">Currency</mat-label>
+      <mat-select class="form-field__select" name="type"
+        [(ngModel)]="secondType" #secondCurrency="ngModel">
+        <mat-option class="form-field__option">None</mat-option>
+        <mat-option class="form-field__option" *ngFor="let currency of currencies"
+          [value]="currency.Cur_OfficialRate">
+          <span class="form-field__option-title">{{ currency.Cur_Abbreviation }} </span>
+          <span class="form-field__option-title">{{ currency.Cur_Name }}</span>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

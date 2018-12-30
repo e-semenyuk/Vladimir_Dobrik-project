@@ -1,0 +1,38 @@
+.calculator {
+    &__form {
+        display: flex;
+        flex-direction: column;
+        color: #FFC107;
+        justify-content: center;
+        align-content: space-between;
+    }
+
+    &__form-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    &__form-field {
+        margin: 20px;
+        min-width: 400px;
+    }
+}
+
+.form-field {
+    &__result {
+        color: #FFC107;
+    }
+
+    &__option {
+        color: #FFC107;
+    }
+
+    &__option-title {
+        &:last-child {
+            margin-left: 10px;
+            color: #fff;
+        }
+    }
+}

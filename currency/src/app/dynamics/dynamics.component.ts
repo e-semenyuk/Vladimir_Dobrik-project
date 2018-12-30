@@ -48,7 +48,7 @@ export class DynamicsComponent implements OnInit {
               {
                 data: curOfficialRates,
                 lineTension: 0,
-                backgroundColor: '#9E53BC',
+                backgroundColor: '#FFC107',
                 fill: true,
                 pointBackgroundColor: 'transparent',
                 pointBorderColor: '#fff',

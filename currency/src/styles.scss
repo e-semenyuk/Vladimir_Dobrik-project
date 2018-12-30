@@ -4,26 +4,16 @@
 
 @include mat-core();
 
-$candy-app-primary: mat-palette($mat-indigo);
-$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
-$candy-app-warn:    mat-palette($mat-pink);
-$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+$candy-app-primary: mat-palette($mat-amber);
+$candy-app-accent:  mat-palette($mat-deep-orange, A200, A100, A400);
+$candy-app-warn:    mat-palette($mat-red);
+$candy-app-theme: mat-dark-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
 
-$dark-primary: mat-palette($mat-blue-grey);
-$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
-$dark-warn:    mat-palette($mat-deep-orange);
-$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
-
-@include angular-material-theme($dark-theme);
-
-.light-theme {
-    @include angular-material-theme($candy-app-theme);
-}
+@include angular-material-theme($candy-app-theme);
 
 body {
-    background-color: $globalBgClr;
+    background-color: #292929;
 }
 html {
-    color: #fff;
     overflow: hidden;
 }

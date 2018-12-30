@@ -20,21 +20,20 @@ export class CurrenciesComponent implements OnInit {
 
   ngOnInit() {
     this.getCurrencies();
-    this.getPrevCurrencies(this.dateService.getDateNthDayAgo(1));
-    
+    this.getPrevCurrencies(this.dateService.getDateNthDayAgo(2));
   }
 
   getCurrencies(date?: Date): void {
     this.currencyService.getCurrencies(date)
-      .subscribe(currencies => {
-        setTimeout(()=>this.showSpinner = false, 1500);
-        return this.currencies = currencies
-      });
+      .subscribe(currencies => this.currencies = currencies);
   }
 
   getPrevCurrencies(date?: Date): void {
     this.currencyService.getCurrencies(date)
-      .subscribe(currencies => this.prevCurrencies = currencies);
+      .subscribe(currencies => {
+        setTimeout(()=>this.showSpinner = false, 1500);
+        return this.prevCurrencies = currencies;
+      });
   }
 
   getDif(index: number): number {
