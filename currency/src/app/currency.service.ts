@@ -4,7 +4,9 @@ import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { DateService } from './date.service';
-import { CurrencyDunamics } from './currency-dinamics';
+import { CurrencyDynamics } from './currency-dynamics';
+
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,9 @@ export class CurrencyService {
   private currenciesRatesUrl = 'http://www.nbrb.by/API/ExRates/Rates';
   private currenciesUrl = 'http://www.nbrb.by/API/ExRates/Currencies';
   private currenciesDynamics = 'http://www.nbrb.by/API/ExRates/Rates/Dynamics';
+
+  public counterFavorites: Subject<number> = new Subject<number>();
+  public counter: number = 0;
 
   constructor(private http: HttpClient,
               public dateService: DateService) {
@@ -42,6 +47,33 @@ export class CurrencyService {
       tap(_ => console.log('getCurrencies fetched currencies')),
       catchError(this.handleError([]))
     );
+  }
+
+  addToFavorite(id: number): void {
+    let currenciesLS = JSON.parse(localStorage.getItem('currencies'));
+
+    if(currenciesLS !== null && currenciesLS.favorite) {
+
+      let isInclude = currenciesLS.favorite.find(item => item.id === id);
+
+      if(!isInclude) {
+        currenciesLS.favorite.push({"id": id});
+        localStorage.setItem('currencies', JSON.stringify(currenciesLS));
+      }
+    } else {
+      localStorage.setItem('currencies', JSON.stringify({favorite: [{id}]}));
+    }
+    this.counter++;
+    this.counterFavorites.next(this.counter);
+  }
+
+  removeFromFavorite(index: number): void {
+    let currenciesLS = JSON.parse(localStorage.getItem('currencies'));
+
+    if(currenciesLS !== null && currenciesLS.favorite) {
+      currenciesLS.favorite.splice(index, 1);
+      localStorage.setItem('currencies', JSON.stringify(currenciesLS));
+    }
   }
 
   searchCurrencies(term: string) {
@@ -86,7 +118,7 @@ export class CurrencyService {
       );
   }
 
-  getDynamics(id: number, startDate: Date, endDate: Date): Observable<CurrencyDunamics[]> {
+  getDynamics(id: number, startDate: Date, endDate: Date): Observable<CurrencyDynamics[]> {
     let startFormattedDate: string;
     let endFormattedDate: string;
 
@@ -95,7 +127,7 @@ export class CurrencyService {
 
     let url = `${this.currenciesDynamics}/${id}?${startFormattedDate}&${endFormattedDate}`;
 
-    return this.http.get<CurrencyDunamics[]>(url)
+    return this.http.get<CurrencyDynamics[]>(url)
       .pipe(
         tap(_ => console.log(`getDynamics fetched rates of currency id =${id}`)),
         catchError(this.handleError([]))

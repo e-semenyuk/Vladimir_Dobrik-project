@@ -16,6 +16,7 @@ import { CurrenciesComponent } from './currencies/currencies.component';
 import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
 import { SearchComponent } from './search/search.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     NavigationMenuComponent,
     SearchComponent,
     LoadingSpinnerComponent,
+    ChartComponent,
   ],
   imports: [
     BrowserModule,

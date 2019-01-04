@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CurrencyService } from '../currency.service';
 
 @Component({
   selector: 'currency-navigation-menu',
@@ -7,11 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationMenuComponent implements OnInit {
 
+    links: object[] = [
+      {
+        title: 'Currencies',
+        routerLink: 'home',
+      },
+      {
+        title: 'Calculator',
+        routerLink: 'calculator',
+      },
+      {
+        title: 'About',
+        routerLink: 'about',
+      }
+    ];
 
-  constructor() {
-  }
+    count: number;
+
+  constructor(private currencyService: CurrencyService) { }
 
   ngOnInit() {
+    this.currencyService.counterFavorites.subscribe(count => this.count = count);
   }
 
+  resetCounter(): void {
+    this.currencyService.counterFavorites.next();
+    this.currencyService.counter = 0;
+  }
 }

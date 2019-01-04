@@ -21,13 +21,17 @@
 .currency {
     &__icon {
         margin-right: 15px;
-        color: #fff;
+        color: #FFC107;
+
+        &--selected {
+            color: #292929;
+        }
     }
 
     &__abbr {
         font-family: sans-serif;
         margin-right: 15px;
-        color: #296A8A;
+        color: lightgray;
 
         &--selected {
             color: #292929;
@@ -47,7 +51,7 @@
         }
 
         &--decreased {
-            background-color: #F7231F;
+            background-color: #F44336;
         }
     }
 
@@ -60,7 +64,7 @@
         align-items: center;
 
         &:hover {
-            background-color: rgba($color: #fff, $alpha: .7);
+            background-color: rgba($color: #fff, $alpha: .3);
         }
 
         &--selected {
@@ -70,7 +74,7 @@
 
     &__rate {
         margin-right: 15px;
-        color: #296A8A;
+        color: lightgray;
 
         &--selected {
             color: #292929;

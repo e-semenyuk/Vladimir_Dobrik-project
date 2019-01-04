@@ -20,7 +20,7 @@ export class CurrenciesComponent implements OnInit {
 
   ngOnInit() {
     this.getCurrencies();
-    this.getPrevCurrencies(this.dateService.getDateNthDayAgo(2));
+    this.getPrevCurrencies(this.dateService.getDateNthDayAgo(3));
   }
 
   getCurrencies(date?: Date): void {

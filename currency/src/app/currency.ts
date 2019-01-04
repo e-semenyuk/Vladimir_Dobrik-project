@@ -1,5 +1,5 @@
 export class Currency {
-    Cur_ID: string;
+    Cur_ID: number;
     Date: string;
     Cur_Abbreviation: string;
     Cur_Scale: string;
