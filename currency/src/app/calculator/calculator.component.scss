@@ -11,12 +11,16 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding: 10px;
     }
 
     &__form-field {
         margin: 20px;
         min-width: 400px;
+    }
+
+    &__checkbox {
+        color: lightgray;
+        margin-left: 20px;
     }
 }
 

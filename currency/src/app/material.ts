@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
     imports: [
@@ -29,7 +29,8 @@ import { MatCardModule } from '@angular/material/card';
         MatButtonModule,
         MatTabsModule,
         MatBadgeModule,
-        MatCardModule
+        MatCardModule,
+        MatCheckboxModule
     ],
     exports: [
         MatFormFieldModule,
@@ -44,7 +45,8 @@ import { MatCardModule } from '@angular/material/card';
         MatButtonModule,
         MatTabsModule,
         MatBadgeModule,
-        MatCardModule
+        MatCardModule,
+        MatCheckboxModule
     ]
 })
 export class MaterialModule {}
