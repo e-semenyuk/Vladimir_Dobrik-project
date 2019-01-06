@@ -69,7 +69,7 @@ export class ChartComponent implements OnInit {
             },
             scales: {
               xAxes: [{
-                display: false
+                display: true
               }],
               yAxes: [{
                 display: true
