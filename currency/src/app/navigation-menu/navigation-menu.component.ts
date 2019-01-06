@@ -23,6 +23,8 @@ export class NavigationMenuComponent implements OnInit {
       }
     ];
 
+    activeLink = this.links[0];
+
     count: number;
 
   constructor(private currencyService: CurrencyService) { }
