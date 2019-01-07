@@ -31,9 +31,8 @@ export class ChartComponent implements OnInit {
         this.currencyID = p['id'];
         this.getDynamics();
       })
-    } else {
-      this.getDynamics();
     }
+    this.getDynamics();
   }
 
   getDynamics(): void {
@@ -83,11 +82,10 @@ export class ChartComponent implements OnInit {
   onChange(type: string, event: any) {
     if(type === 'start') {
       this.startDate = event.value._d;
-      this.getDynamics();
     } else {
       this.endDate = event.value._d;
-      this.getDynamics();
     }
+    this.getDynamics();
   }
 
 }
