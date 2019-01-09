@@ -11,7 +11,10 @@
       (click)="activeLink = link; resetCounter()"
       [active]="activeLink == link"
       [routerLink]="['/', 'favorite']">
-      <span [matBadge]="count" matBadgeOverlap="false" matBadgeSize="medium">Favorite</span>
+      <span class="nav-menu__link-title" [matBadge]="count"
+        matBadgeOverlap="false" matBadgeSize="medium">
+        Favorite
+      </span>
     </a>
   </nav>
 </nav>

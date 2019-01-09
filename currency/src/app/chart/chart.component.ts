@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { CurrencyService } from '../currency.service';
 import { DateService } from '../date.service';
@@ -22,8 +22,7 @@ export class ChartComponent implements OnInit {
 
   constructor(private dateService: DateService,
               private currencyService: CurrencyService,
-              private route: ActivatedRoute,
-              private cdref: ChangeDetectorRef) { }
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.renderDynamics();

@@ -26,11 +26,11 @@
   </div>
 
   <div class="calculator__form-group">
-    <mat-form-field class="calculator__form-field">
-      <mat-label>Result</mat-label>
+    <mat-form-field class="form-field calculator__form-field">
+      <mat-label class="form-field__label">Result</mat-label>
       <input class="form-field__input" matInput type="number" name="result"
        [value]="exchangeResult" disabled>
-      <mat-hint
+      <mat-hint class="form-field__label"
         *ngIf="firstCurrency.model && count.model && secondCurrency.model === undefind">
         BYN
       </mat-hint>

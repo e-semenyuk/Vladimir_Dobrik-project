@@ -20,7 +20,7 @@ export class CurrenciesComponent implements OnInit {
 
   ngOnInit() {
     this.getCurrencies();
-    this.getPrevCurrencies(this.dateService.getDateNthDayAgo(4));
+    this.getPrevCurrencies(this.dateService.getDateNthDayAgo(1));
     this.currencyService.selectedCurrency.subscribe(currency => this.onSelect(currency));
   }
 
@@ -51,6 +51,7 @@ export class CurrenciesComponent implements OnInit {
   }
 
   onSelect(selectedCurrency: Currency): void {
-    this.selectedCurrency = this.currencies.find(currency => currency.Cur_ID === selectedCurrency.Cur_ID);
+    this.selectedCurrency = this.currencies
+      .find(currency => currency.Cur_ID === selectedCurrency.Cur_ID);
   }
 }

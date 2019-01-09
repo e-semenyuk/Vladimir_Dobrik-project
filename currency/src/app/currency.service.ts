@@ -18,8 +18,8 @@ export class CurrencyService {
   private currenciesUrl = 'http://www.nbrb.by/API/ExRates/Currencies';
   private currenciesDynamics = 'http://www.nbrb.by/API/ExRates/Rates/Dynamics';
 
-  private counterFavorites: Subject<number> = new Subject<number>();
-  private counter: number = 0;
+  public counterFavorites: Subject<number> = new Subject<number>();
+  public counter: number = 0;
 
   public selectedCurrency: Subject<Currency> = new Subject<Currency>();
 

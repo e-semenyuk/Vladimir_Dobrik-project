@@ -7,7 +7,6 @@ import { CurrencyService } from '../currency.service';
   styleUrls: ['./navigation-menu.component.scss']
 })
 export class NavigationMenuComponent implements OnInit {
-
     links: object[] = [
       {
         title: 'Currencies',
