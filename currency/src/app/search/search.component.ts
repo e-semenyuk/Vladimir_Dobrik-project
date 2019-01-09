@@ -13,15 +13,15 @@ export class SearchComponent implements OnInit {
 
   constructor(private currencyService: CurrencyService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(){}
 
   search(term: string): void {
     this.searchResult = this.currencyService.searchCurrencies(term);
   }
 
-  select(searchBox: HTMLInputElement): void {
+  select(input: HTMLInputElement, currency: Currency): void {
     this.searchResult = [];
-    searchBox.value = '';
+    input.value = '';
+    this.currencyService.selectedCurrency.next(currency);
   }
 }

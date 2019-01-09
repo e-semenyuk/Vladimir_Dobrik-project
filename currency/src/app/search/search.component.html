@@ -1,6 +1,6 @@
 <div class="search__container">
   <mat-form-field class="search__form" appearance="fill">
-    <mat-label>Search</mat-label>
+    <mat-label class="search__label">Search</mat-label>
     <input class="search__input" placeholder="Enter abbreviation"
       matInput type="search" autocomplete="off" maxlength="3"
       (input)="search(searchBox.value)" #searchBox>
@@ -8,7 +8,7 @@
   <mat-nav-list class="search__result" *ngIf="searchResult && searchResult.length">
     <a class="search__link" mat-list-item *ngFor="let currency of searchResult"
       [routerLink]="['currency', currency.Cur_ID, 'dynamics']"
-      (click)=select(searchBox)>
+      (click)=select(searchBox,currency)>
         <span class="search__abbreviation">{{ currency.Cur_Abbreviation }}</span>
         <span class="search__full-name">{{ currency.Cur_Name }}</span>
         <mat-divider class="search__devider" [inset]="true"></mat-divider>

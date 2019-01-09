@@ -16,11 +16,12 @@ export class CurrenciesComponent implements OnInit {
   showSpinner: boolean = true;
 
   constructor(private currencyService: CurrencyService,
-              public dateService: DateService) { }
+              private dateService: DateService) { }
 
   ngOnInit() {
     this.getCurrencies();
-    this.getPrevCurrencies(this.dateService.getDateNthDayAgo(3));
+    this.getPrevCurrencies(this.dateService.getDateNthDayAgo(4));
+    this.currencyService.selectedCurrency.subscribe(currency => this.onSelect(currency));
   }
 
   getCurrencies(date?: Date): void {
@@ -49,7 +50,7 @@ export class CurrenciesComponent implements OnInit {
     return result;
   }
 
-  onSelect(currency: Currency): void {
-    this.selectedCurrency = currency;
+  onSelect(selectedCurrency: Currency): void {
+    this.selectedCurrency = this.currencies.find(currency => currency.Cur_ID === selectedCurrency.Cur_ID);
   }
 }

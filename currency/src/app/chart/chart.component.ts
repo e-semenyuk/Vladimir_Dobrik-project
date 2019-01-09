@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 import { CurrencyService } from '../currency.service';
 import { DateService } from '../date.service';
@@ -9,7 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'currency-chart',
   templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.scss']
+  styleUrls: ['./chart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChartComponent implements OnInit {
   @Input() currencyID: number;
@@ -21,18 +22,11 @@ export class ChartComponent implements OnInit {
 
   constructor(private dateService: DateService,
               private currencyService: CurrencyService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private cdref: ChangeDetectorRef) { }
 
   ngOnInit() {
-    let param = this.route.snapshot.paramMap.get('id');
-
-    if(param) {
-      this.route.params.subscribe(p => {
-        this.currencyID = p['id'];
-        this.getDynamics();
-      })
-    }
-    this.getDynamics();
+    this.renderDynamics();
   }
 
   getDynamics(): void {
@@ -77,6 +71,20 @@ export class ChartComponent implements OnInit {
           }
         })
       });
+  }
+
+  renderDynamics(): void {
+    let param = this.route.snapshot.paramMap.get('id');
+
+    setTimeout(() => {
+      if(param) {
+        this.route.params.subscribe(p => {
+          this.currencyID = p['id'];
+          this.getDynamics();
+        })
+      }
+      this.getDynamics();
+    }, 600);
   }
 
   onChange(type: string, event: any) {

@@ -12,16 +12,19 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class CurrencyService {
-  public currencies: Currency[];
+  private currencies: Currency[];
+
   private currenciesRatesUrl = 'http://www.nbrb.by/API/ExRates/Rates';
   private currenciesUrl = 'http://www.nbrb.by/API/ExRates/Currencies';
   private currenciesDynamics = 'http://www.nbrb.by/API/ExRates/Rates/Dynamics';
 
-  public counterFavorites: Subject<number> = new Subject<number>();
-  public counter: number = 0;
+  private counterFavorites: Subject<number> = new Subject<number>();
+  private counter: number = 0;
+
+  public selectedCurrency: Subject<Currency> = new Subject<Currency>();
 
   constructor(private http: HttpClient,
-              public dateService: DateService) {
+              private dateService: DateService) {
     this.getCurrencies().subscribe(currencies => this.currencies = currencies);
 }
 
@@ -44,7 +47,7 @@ export class CurrencyService {
     const url = `${this.currenciesRatesUrl}?Periodicity=0&ParamMode=1&${formattedDate}`;
 
     return this.http.get<Currency[]>(url).pipe(
-      tap(_ => console.log('getCurrencies fetched currencies')),
+      tap(() => console.log('getCurrencies fetched currencies')),
       catchError(this.handleError([]))
     );
   }
@@ -76,7 +79,7 @@ export class CurrencyService {
     }
   }
 
-  searchCurrencies(term: string) {
+  searchCurrencies(term: string): Currency[] {
     let searchResult: Currency[] = [];
 
     if (term.trim() === '') {
@@ -129,7 +132,7 @@ export class CurrencyService {
 
     return this.http.get<CurrencyDynamics[]>(url)
       .pipe(
-        tap(_ => console.log(`getDynamics fetched rates of currency id =${id}`)),
+        tap(() => console.log(`getDynamics fetched rates of currency id =${id}`)),
         catchError(this.handleError([]))
       );
   }

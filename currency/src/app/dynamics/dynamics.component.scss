@@ -7,8 +7,10 @@
     }
 
     &__button {
-        position: fixed;
-        right: 100px;
-        top: 15vh;
+        position: absolute;
+        right: 20px;
+        top: 0;
+        color: #292929;
+        font-weight: 600;
     }
 }

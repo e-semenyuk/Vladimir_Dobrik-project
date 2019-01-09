@@ -3,7 +3,7 @@ import { Currency } from '../currency';
 import { CurrencyService } from '../currency.service';
 
 interface IFavoriteCurrency {
-  id: number
+  id: number;
 }
 
 @Component({

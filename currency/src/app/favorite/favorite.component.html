@@ -5,18 +5,18 @@
     <mat-tab class="favorites__tab" *ngFor="let currency of currencies; let index = index">
       <ng-template class="favorites__label" mat-tab-label>{{ currency.Cur_Abbreviation }}</ng-template>
       <ng-template class="favorites__content" matTabContent>
-      <mat-card class="card">
-        <mat-card-header class="card__header">
+        <mat-card class="card favorites__card">
+          <button class="card__button" color="primary" mat-raised-button (click)="remove(index)">
+              <i class="material-icons">delete</i>
+          </button>
+          <mat-card-header class="card__header">
             <div class="card__icon" mat-card-avatar><i class="fas fa-coins"></i></div>
-          <mat-card-title class="card__title">{{ currency.Cur_Abbreviation }}</mat-card-title>
-          <mat-card-subtitle class="card__subtitle">{{ currency.Cur_Name }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content class="card__content">
-          <currency-chart class="card__chart" [currencyID]="currency.Cur_ID"></currency-chart>
-        </mat-card-content>
-        <mat-card-actions class="card__buttons">
-          <button class="card__button" mat-raised-button (click)="remove(index)">DELETE</button>
-        </mat-card-actions>
+            <mat-card-title class="card__title">{{ currency.Cur_Abbreviation }}</mat-card-title>
+            <mat-card-subtitle class="card__subtitle">{{ currency.Cur_Name }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="card__content">
+            <currency-chart class="card__chart" [currencyID]="currency.Cur_ID"></currency-chart>
+          </mat-card-content>
         </mat-card>
       </ng-template>
     </mat-tab>

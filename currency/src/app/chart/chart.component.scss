@@ -5,13 +5,12 @@
         align-items: center;
         color: #FFC107;
         width: 640px;
-        height: 600px;
+        height: 400px;
     }
 
     &__datepickers {
         display: flex;
         flex-direction: row;
-        margin: 20px;
     }
 
     &__datepicker {

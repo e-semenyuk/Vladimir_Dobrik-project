@@ -1,7 +1,7 @@
 <div class="dynamics__container">
   <button class="dynamics__button" [disabled]="isAdded"
-     mat-stroked-button (click)="add()">
-    <mat-icon class="dynamics__icon">favorite</mat-icon>
+     mat-raised-button color="primary" (click)="add()">
+    <mat-icon class="dynamics__icon" color="warn">favorite</mat-icon>
     To Favorite
   </button>
   <currency-chart class="chart dynamics__chart" [currencyID]="currencyID"></currency-chart>

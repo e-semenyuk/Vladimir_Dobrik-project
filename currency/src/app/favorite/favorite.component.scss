@@ -1,5 +1,34 @@
+.favorites {
+    &__container {
+        max-width: 900px;
+    }
+
+    &__card {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__content {
+        padding: 20px;
+    }
+}
+
 .card {
+    position: relative;
+
     &__icon {
         color: #FFC107;
+    }
+
+    &__button {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        color: #292929;
+    }
+
+    &__content {
+        align-self: center;
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CurrencyService } from '../currency.service';
 import { Currency } from '../currency';
 
@@ -7,7 +7,8 @@ import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'currency-calculator',
   templateUrl: './calculator.component.html',
-  styleUrls: ['./calculator.component.scss']
+  styleUrls: ['./calculator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CalculatorComponent implements OnInit {
 
@@ -30,7 +31,6 @@ export class CalculatorComponent implements OnInit {
 
   ngAfterContentChecked() {
     this.calcExchangeResult();
-    this.cdref.detectChanges();
   }
 
   calcExchangeResult() {
