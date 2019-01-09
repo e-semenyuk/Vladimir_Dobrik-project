@@ -20,12 +20,11 @@
 
 .currency {
     &__icon {
+        display: inline-block;
         margin-right: 15px;
-        color: #FFC107;
-
-        &--selected {
-            color: #292929;
-        }
+        width: 52px;
+        height: 32px;
+        background-image: url('../../assets/img/flags.png');
     }
 
     &__abbr {
@@ -80,4 +79,108 @@
             color: #292929;
         }
     }
+}
+
+.aud {
+    background-position: -160px -234px;
+}
+
+.bgn {
+    background-position: -480px -334px;
+}
+
+.uah {
+    background-position: -534px -434px;
+}
+
+.dkk {
+    background-position: -320px -334px;
+}
+
+.usd {
+    background-position: -266px -234px;
+}
+
+.eur {
+    background-position: -427px -267px;
+}
+
+.pln {
+    background-position: -160px 0px;
+}
+
+.irr {
+    background-position: -588px -368px;
+}
+
+.isk {
+    background-position: -747px -368px;
+}
+
+.jpy {
+    background-position: -320px -300px;
+}
+
+.cad {
+    background-position: -214px -200px;
+}
+
+.cny {
+    background-position: -214px -234px;
+}
+
+.kwd {
+    background-position: 0px -434px;
+}
+
+.mdl {
+    background-position: -160px -367px;
+}
+
+.nzd {
+    background-position: -694px 0px;
+}
+
+.nok {
+    background-position: -54px -34px;
+}
+
+.rub {
+    background-position: -481px -234px;
+}
+
+.xdr {
+    background-position: -376px -267px;
+}
+
+.sgd {
+    background-position: -214px -301px;
+}
+
+.kgs {
+    background-position: -588px -267px;
+}
+
+.kzt {
+    background-position: -641px -67px;
+}
+
+.try {
+    background-position: -694px -34px;
+}
+
+.gbr {
+    background-position: -267px -167px;
+}
+
+.czk {
+    background-position: -747px -34px;
+}
+
+.sek {
+    background-position: 0px 0px;
+}
+
+.chf {
+    background-position: -320px -434px;
 }

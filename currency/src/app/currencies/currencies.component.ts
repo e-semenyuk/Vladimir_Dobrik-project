@@ -15,6 +15,35 @@ export class CurrenciesComponent implements OnInit {
   selectedCurrency: Currency;
   showSpinner: boolean = true;
 
+  flags: string[] = [
+    'aud',
+    'bgn',
+    'uah',
+    'dkk',
+    'usd',
+    'eur',
+    'pln',
+    'irr',
+    'isk',
+    'jpy',
+    'cad',
+    'cny',
+    'kwd',
+    'mdl',
+    'nzd',
+    'nok',
+    'rub',
+    'xdr',
+    'sgd',
+    'kgs',
+    'kzt',
+    'try',
+    'gbr',
+    'czk',
+    'sek',
+    'chf'
+  ];
+
   constructor(private currencyService: CurrencyService,
               private dateService: DateService) { }
 

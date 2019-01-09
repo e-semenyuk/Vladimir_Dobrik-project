@@ -5,9 +5,7 @@
       (click)="onSelect(currency)">
         <a class="currency__link" [routerLink]="['currency', currency.Cur_ID, 'dynamics']"
           [class.currency__link--selected]="currency === selectedCurrency">
-            <i class="currency__icon far fa-money-bill-alt"
-              [class.currency__icon--selected]="currency === selectedCurrency">
-            </i>
+            <div class="currency__icon" [ngClass]="flags[index]"></div>
             <span class="currency__abbr"
               [class.currency__abbr--selected]="currency === selectedCurrency">
                 {{ currency.Cur_Abbreviation }}
