@@ -14,10 +14,10 @@
     <mat-form-field class=" form-field calculator__form-field">
       <mat-label class="form-field__label">Currency</mat-label>
       <mat-select class="form-field__select" name="type"
-        [(ngModel)]="firstCurrencyRate" #firstCurrency="ngModel">
+        [(ngModel)]="firstCurrency" #firstSelect="ngModel">
         <mat-option class="form-field__option">None</mat-option>
         <mat-option class="form-field__option" *ngFor="let currency of currencies"
-          [value]="currency.Cur_OfficialRate">
+          [value]="currency">
           <span class="form-field__option-title">{{ currency.Cur_Abbreviation }} </span>
           <span class="form-field__option-title">{{ currency.Cur_Name }}</span>
         </mat-option>
@@ -31,7 +31,7 @@
       <input class="form-field__input" matInput type="number" name="result"
        [value]="exchangeResult" disabled>
       <mat-hint class="form-field__label"
-        *ngIf="firstCurrency.model && count.model && secondCurrency.model === undefind">
+        *ngIf="firstSelect.model && count.model && secondSelect.model === undefind">
         BYN
       </mat-hint>
     </mat-form-field>
@@ -39,10 +39,10 @@
     <mat-form-field class="form-field calculator__form-field">
       <mat-label class="form-field__label">Currency</mat-label>
       <mat-select class="form-field__select" name="type"
-        [(ngModel)]="secondCurrencyRate" #secondCurrency="ngModel">
+        [(ngModel)]="secondCurrency" #secondSelect="ngModel">
         <mat-option class="form-field__option">None</mat-option>
         <mat-option class="form-field__option" *ngFor="let currency of currencies"
-          [value]="currency.Cur_OfficialRate">
+          [value]="currency">
           <span class="form-field__option-title">{{ currency.Cur_Abbreviation }} </span>
           <span class="form-field__option-title">{{ currency.Cur_Name }}</span>
         </mat-option>

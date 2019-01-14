@@ -11,14 +11,48 @@ import { Currency } from '../currency';
 export class CalculatorComponent implements OnInit {
   currencies: Currency[];
 
-  value: number;
-  firstCurrencyRate: number;
-  secondCurrencyRate: number;
-  exchangeResult: number;
+  public firstCurrency: Currency;
+  public secondCurrency: Currency;
 
-  roundChkbxChecked: boolean = true;
+  public value: number;
+  public exchangeResult: number;
+
+  public roundChkbxChecked: boolean = true;
 
   constructor(private currencyService: CurrencyService) { }
+
+  public calcExchangeResult(): void {
+    let firstCurrencyRate = this.firstCurrency ? Number(this.firstCurrency.Cur_OfficialRate) : 0;
+    let firstCurrencyScale = this.firstCurrency ? Number(this.firstCurrency.Cur_Scale) : 0;
+    let secondCurrencyRate = this.secondCurrency ? Number(this.secondCurrency.Cur_OfficialRate) : 0;
+    let secondCurrencyScale = this.secondCurrency ? Number(this.secondCurrency.Cur_Scale) : 0;
+
+    if(this.value && this.firstCurrency && this.secondCurrency === undefined) {
+
+      let result = (this.value * firstCurrencyRate) / firstCurrencyScale;
+
+      if(this.roundChkbxChecked) {
+        this.exchangeResult = Number((result).toFixed(4));
+      } else {
+        this.exchangeResult = result;
+      }
+    }
+
+    if(this.value && this.firstCurrency && this.secondCurrency) {
+
+      let result = (((this.value * firstCurrencyRate) / firstCurrencyScale) / secondCurrencyRate) * secondCurrencyScale;
+
+      if(this.roundChkbxChecked) {
+        this.exchangeResult = Number((result).toFixed(4));
+      } else {
+        this.exchangeResult = result;
+      }
+    }
+
+    if(!this.value || !this.firstCurrency) {
+      this.exchangeResult = null;
+    }
+  }
 
   ngOnInit() {
     this.currencyService.getCurrencies()
@@ -27,27 +61,5 @@ export class CalculatorComponent implements OnInit {
 
   ngAfterContentChecked() {
     this.calcExchangeResult();
-  }
-
-  calcExchangeResult() {
-    if(this.value && this.firstCurrencyRate && this.secondCurrencyRate === undefined) {
-      if(this.roundChkbxChecked) {
-        this.exchangeResult = Number((this.value * this.firstCurrencyRate).toFixed(4));
-      } else {
-        this.exchangeResult = this.value * this.firstCurrencyRate;
-      }
-    }
-
-    if(this.value && this.firstCurrencyRate && this.secondCurrencyRate) {
-      if(this.roundChkbxChecked) {
-        this.exchangeResult = Number(((this.value * this.firstCurrencyRate) / this.secondCurrencyRate).toFixed(4));
-      } else {
-        this.exchangeResult = (this.value * this.firstCurrencyRate) / this.secondCurrencyRate;
-      }
-    }
-
-    if(!this.value || !this.firstCurrencyRate) {
-      this.exchangeResult = null;
-    }
   }
 }
