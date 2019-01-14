@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
-import { CurrencyService } from '../currency.service';
-import { DateService } from '../date.service';
+import { CurrencyService } from '../../services/currency.service';
+import { DateService } from '../../services/date.service';
 
 import { Chart } from 'chart.js';
 import { ActivatedRoute } from '@angular/router';

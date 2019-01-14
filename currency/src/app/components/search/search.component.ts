@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Currency } from '../currency';
-import { CurrencyService } from '../currency.service';
+import { Currency } from '../../shared/currency';
+import { CurrencyService } from '../../services/currency.service';
 
 @Component({
   selector: 'currency-search',

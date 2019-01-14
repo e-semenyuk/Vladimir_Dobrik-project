@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { CurrencyService } from '../currency.service';
-import { Currency } from '../currency';
+import { CurrencyService } from '../services/currency.service';
+import { Currency } from '../shared/currency';
 
 @Component({
   selector: 'currency-calculator',

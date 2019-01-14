@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CurrencyService } from '../currency.service';
+import { CurrencyService } from '../../services/currency.service';
 
 @Component({
   selector: 'currency-navigation-menu',

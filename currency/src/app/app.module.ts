@@ -8,15 +8,15 @@ import { MaterialModule } from './material';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { ShowplusPipe } from './showplus.pipe';
+import { ShowplusPipe } from './pipes/showplus.pipe';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from './root-component/app.component';
 import { routingComponents } from './app-routing.module';
-import { CurrenciesComponent } from './currencies/currencies.component';
-import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
-import { SearchComponent } from './search/search.component';
-import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
-import { ChartComponent } from './chart/chart.component';
+import { CurrenciesComponent } from './components/currencies/currencies.component';
+import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
+import { SearchComponent } from './components/search/search.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 @NgModule({
   declarations: [

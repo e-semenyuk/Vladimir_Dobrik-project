@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DynamicsComponent } from './dynamics/dynamics.component';
+import { DynamicsComponent } from './components/dynamics/dynamics.component';
 import { AboutComponent } from './about/about.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { FavoriteComponent } from './favorite/favorite.component';

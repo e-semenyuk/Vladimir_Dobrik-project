@@ -1,5 +1,7 @@
-h1 {
-    color: #fff;
-    font-size: 40px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.home {
+    &__header {
+        color: #fff;
+        font-size: 40px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 }

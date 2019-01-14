@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { CurrencyService } from '../currency.service';
+import { CurrencyService } from '../../services/currency.service';
 
 @Component({
   selector: 'currency-dynamics',
