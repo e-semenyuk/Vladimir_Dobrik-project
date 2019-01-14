@@ -7,7 +7,8 @@ import { CurrencyService } from '../../services/currency.service';
   styleUrls: ['./navigation-menu.component.scss']
 })
 export class NavigationMenuComponent implements OnInit {
-    links: object[] = [
+    public link;
+    public links: object[] = [
       {
         title: 'Currencies',
         routerLink: 'home',
@@ -22,9 +23,9 @@ export class NavigationMenuComponent implements OnInit {
       }
     ];
 
-    activeLink = this.links[0];
+    public activeLink = this.links[0];
 
-    count: number;
+    public count: number;
 
   constructor(private currencyService: CurrencyService) { }
 
@@ -32,7 +33,7 @@ export class NavigationMenuComponent implements OnInit {
     this.currencyService.counterFavorites.subscribe(count => this.count = count);
   }
 
-  resetCounter(): void {
+  public resetCounter(): void {
     this.currencyService.counterFavorites.next();
     this.currencyService.counter = 0;
   }

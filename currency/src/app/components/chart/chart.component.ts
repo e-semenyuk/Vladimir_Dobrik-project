@@ -15,20 +15,16 @@ import { ActivatedRoute } from '@angular/router';
 export class ChartComponent implements OnInit {
   @Input() currencyID: number;
 
-  startDate: Date = this.dateService.getDateNthDayAgo(7);
-  endDate: Date = new Date();
+  public startDate: Date = this.dateService.getDateNthDayAgo(7);
+  public endDate: Date = new Date();
 
-  chart = [];
+  public chart = [];
 
   constructor(private dateService: DateService,
               private currencyService: CurrencyService,
               private route: ActivatedRoute) { }
 
-  ngOnInit() {
-    this.renderDynamics();
-  }
-
-  getDynamics(): void {
+  public getDynamics(): void {
     this.currencyService.getDynamics(this.currencyID, this.startDate, this.endDate)
       .subscribe(dynamics => {
         let curOfficialRates: number[] = dynamics.map(item => item.Cur_OfficialRate);
@@ -72,7 +68,7 @@ export class ChartComponent implements OnInit {
       });
   }
 
-  renderDynamics(): void {
+  public renderDynamics(): void {
     let param = this.route.snapshot.paramMap.get('id');
 
     setTimeout(() => {
@@ -86,7 +82,7 @@ export class ChartComponent implements OnInit {
     }, 600);
   }
 
-  onChange(type: string, event: any) {
+  public onChange(type: string, event: any): void {
     if(type === 'start') {
       this.startDate = event.value._d;
     } else {
@@ -95,4 +91,7 @@ export class ChartComponent implements OnInit {
     this.getDynamics();
   }
 
+  ngOnInit() {
+    this.renderDynamics();
+  }
 }

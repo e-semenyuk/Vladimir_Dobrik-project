@@ -10,12 +10,12 @@ import { DateService } from '../../services/date.service';
 })
 export class CurrenciesComponent implements OnInit {
 
-  currencies: Currency[];
-  prevCurrencies: Currency[];
-  selectedCurrency: Currency;
-  showSpinner: boolean = true;
+  public currencies: Currency[];
+  public prevCurrencies: Currency[];
+  public selectedCurrency: Currency;
+  public showSpinner: boolean = true;
 
-  flags: string[] = [
+  public flags: string[] = [
     'aud',
     'bgn',
     'uah',
@@ -47,18 +47,12 @@ export class CurrenciesComponent implements OnInit {
   constructor(private currencyService: CurrencyService,
               private dateService: DateService) { }
 
-  ngOnInit() {
-    this.getCurrencies();
-    this.getPrevCurrencies(this.dateService.getDateNthDayAgo(1));
-    this.currencyService.selectedCurrency.subscribe(currency => this.onSelect(currency));
-  }
-
-  getCurrencies(date?: Date): void {
+  public getCurrencies(date?: Date): void {
     this.currencyService.getCurrencies(date)
       .subscribe(currencies => this.currencies = currencies);
   }
 
-  getPrevCurrencies(date?: Date): void {
+  public getPrevCurrencies(date?: Date): void {
     this.currencyService.getCurrencies(date)
       .subscribe(currencies => {
         setTimeout(()=>this.showSpinner = false, 1500);
@@ -66,7 +60,7 @@ export class CurrenciesComponent implements OnInit {
       });
   }
 
-  getDif(index: number): number {
+  public getDif(index: number): number {
     let result: number = 0;
     let prevRate: number = 0;
     let curRate: number = 0;
@@ -79,8 +73,14 @@ export class CurrenciesComponent implements OnInit {
     return result;
   }
 
-  onSelect(selectedCurrency: Currency): void {
+  public onSelect(selectedCurrency: Currency): void {
     this.selectedCurrency = this.currencies
       .find(currency => currency.Cur_ID === selectedCurrency.Cur_ID);
+  }
+
+  ngOnInit() {
+    this.getCurrencies();
+    this.getPrevCurrencies(this.dateService.getDateNthDayAgo(1));
+    this.currencyService.selectedCurrency.subscribe(currency => this.onSelect(currency));
   }
 }

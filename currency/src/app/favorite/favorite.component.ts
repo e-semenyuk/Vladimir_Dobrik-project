@@ -13,16 +13,12 @@ interface IFavoriteCurrency {
 })
 export class FavoriteComponent implements OnInit {
 
-  currencies: Currency[];
-  favoriteCurrencies: IFavoriteCurrency[];
+  public currencies: Currency[];
+  public favoriteCurrencies: IFavoriteCurrency[];
 
   constructor(private currencyService: CurrencyService) { }
 
-  ngOnInit() {
-    this.renderFavorites();
-  }
-
-  getCurrencies(date?: Date): void {
+  public getCurrencies(date?: Date): void {
     this.currencyService.getCurrencies(date).subscribe(
       currencies => {
         let filteredCurrencies = currencies.filter(
@@ -34,7 +30,7 @@ export class FavoriteComponent implements OnInit {
     )
   }
 
-  renderFavorites(): void {
+  public renderFavorites(): void {
     let currenciesLS = JSON.parse(localStorage.getItem('currencies'));
 
     if(currenciesLS !== null && currenciesLS.favorite) {
@@ -43,8 +39,12 @@ export class FavoriteComponent implements OnInit {
     }
   }
 
-  remove(index: number): void {
+  public remove(index: number): void {
     this.currencyService.removeFromFavorite(index);
+    this.renderFavorites();
+  }
+
+  ngOnInit() {
     this.renderFavorites();
   }
 }

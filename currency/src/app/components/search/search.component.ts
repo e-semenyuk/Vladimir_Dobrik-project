@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { Currency } from '../../shared/currency';
 import { CurrencyService } from '../../services/currency.service';
@@ -8,18 +8,16 @@ import { CurrencyService } from '../../services/currency.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
-  searchResult: Currency[];
+export class SearchComponent {
+  public searchResult: Currency[];
 
   constructor(private currencyService: CurrencyService) {}
 
-  ngOnInit(){}
-
-  search(term: string): void {
+  public search(term: string): void {
     this.searchResult = this.currencyService.searchCurrencies(term);
   }
 
-  select(input: HTMLInputElement, currency: Currency): void {
+  public select(input: HTMLInputElement, currency: Currency): void {
     this.searchResult = [];
     input.value = '';
     this.currencyService.selectedCurrency.next(currency);
