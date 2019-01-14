@@ -31,7 +31,7 @@
       <input class="form-field__input" matInput type="number" name="result"
        [value]="exchangeResult" disabled>
       <mat-hint class="form-field__label"
-        *ngIf="firstSelect.model && count.model && secondSelect.model === undefind">
+        *ngIf="firstSelect.model && count.model && !secondSelect.model">
         BYN
       </mat-hint>
     </mat-form-field>

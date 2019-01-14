@@ -10,8 +10,8 @@ import { CurrencyService } from '../../services/currency.service';
 })
 export class DynamicsComponent implements OnInit {
 
-  private currencyID: number;
-  private isAdded: boolean = false;
+  public currencyID: number;
+  public isAdded: boolean = false;
 
   constructor(private currencyService: CurrencyService,
               private route: ActivatedRoute) {
